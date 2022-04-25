@@ -29,8 +29,11 @@ int main()
                 }
                 break;
             case sf::Event::EventType::TextEntered:
-                if (event.text.unicode == 8) {
+                if (event.text.unicode == 8 && buffer.getSize()!=0) {
                     buffer.erase(buffer.getSize() - 1);
+                    window.setTitle(buffer);
+                }
+                else if (event.text.unicode == 8 && buffer.getSize() == 0) {
                     window.setTitle(buffer);
                 }
                 else {
